@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function isNumeric(str) {
+            if (typeof str != "string") return false // we only process strings!  
+            return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+                !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+        }
+        function vtff(){
+            if(!isNumeric(document.forms["trigo"]["abscisse"].value)){
+                return false;
+            }
+            if(!isNumeric(document.forms["trigo"]["ordonne"].value)){
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <style>
+        form    { display: table;      }
+        p.pForm { display: table-row;  }
+        label   { display: table-cell; padding-right: 20px; padding-bottom: 10px;}
+        form > input, form > select   { display: table-cell; padding-bottom: 10px;}
+    </style>
+</head>
+<body>
+    <h1>Cercle trigonométrique</h1>
+    <form action="/Trigo/trigo.php" method="get" onsubmit="return vtff()" name="trigo">
+        <p class="pForm">
+            <label>Abscisse</label>
+            <input type="text" name="abscisse" id="">
+        </p>
+        
+        <p class="pForm">
+            <label>Ordonné</label>
+            <input type="text" name="ordonne" id="">
+        </p>
+        
+        <p class="pForm">
+            <label>Choix</label>
+            <select name="choix">
+                <option value="dist">Distance</option>
+                <option value="cos">Cosinus</option>
+                <option value="sin">Sinus</option>
+                <option value="tan">Tangeante</option>
+                <option value="cercle">Cercle trigonométrique</option>
+            </select>
+        </p>
+        <input type="submit" value="CLICK !!!">
+        
+    </form>
+</body>
+</html>

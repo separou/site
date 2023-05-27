@@ -1,0 +1,8 @@
+#d1,#d2,#d3{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+}
+#d1{background-color: red;}
+#d2{background-color: yellow;}
+#d3{background-color: red;}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="cercle_ajax2.css" />
+        <title>Cercle trigonométrique</title>
+    </head>
+    <script>
+        function ajax(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange=() => {
+                if(xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("result").innerHTML=xhttp.response;
+                }
+            }
+            var abscisse=document.getElementById('abscisse').value;
+            var ordonnée=document.getElementById('ordonnée').value;
+            var choix=document.getElementById('choix').value;
+            xhttp.open("GET", "cercle_ajax2.php?abscisse=" +abscisse+"&ordonnée="+ordonnée+"&choix="+choix, true); //ouvre un dialogue avec le serveur TVA.php ; méthode de communication : GET ; true : ne va pas bloquer le client, communication asynchrone 
+            xhttp.send(); //concrétiser la requête
+        }
+    </script>
+    <body>
+        <center><h1>Cercle trigonométrique</h1></center>
+        <div id="form">
+            <label>Abscisse</label> <input type="number" id="abscisse" placeholder="Entrez l'abscisse"><br><br>
+            <label>Ordonnée</label> <input type="number" id="ordonnée" placeholder="Entrez l'ordonnée"><br><br>
+            <label>Choix</label><select id="choix">
+                <option>Distance</option>
+                <option>Cosinus</option>
+                <option>Sinus</option>
+                <option>Tangente</option>
+                <option>Dans le cercle trigonométrique ?</option>
+            </select><br><br>
+            <button type="button" onclick="ajax()">Valider</button>
+        </div>
+        <br><br>
+        <center><h3>Résultats</h3></center>
+        <div id="res">
+            <label> Résultat : </label><span id="result"></span><br>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="cercle_ajax.css" />
+        <title>Cercle trigonométrique</title>
+    </head>
+    <script>
+        function calculer(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange=function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("ptt").innerHTML = this.responseText;
+                    var abscisse=document.getElementById('abscisse').value;
+                    document.getElementById("pht").innerHTML = ordonnée;
+                }
+            }
+            var abscisse=document.getElementById('abscisse').value;
+            var ordonnée=document.getElementById('ordonnée').value;
+            var choix=document.getElementById('choix').value;
+            print;
+            xhttp.open("GET", "cercle_ajax.php?abscisse=" +abscisse+"&ordonnée="+ordonnée+"&choix"+choix, true); //ouvre un dialogue avec le serveur TVA.php ; méthode de communication : GET ; true : ne va pas bloquer le client, communication asynchrone 
+            xhttp.send(); //concrétiser la requête
+        }
+    </script>
+    <body>
+        <center><h1>Cercle trigonométrique</h1></center>
+        <div id="form">
+            <label>Abscisse</label> <input type="number" id="abscisse" placeholder="Entrez l'abscisse"><br><br>
+            <label>Ordonnée</label> <input type="number" id="ordonnée" placeholder="Entrez l'ordonnée"><br><br>
+            <label>Choix</label><select id="choix">
+                <option id="dist">Distance</option>
+                <option id="cos">Cosinus</option>
+                <option id="sin">Sinus</option>
+                <option id="tan">Tangente</option>
+                <option id="cer">Dans le cercle trigonométrique ?</option>
+            </select><br><br>
+            <button type="button" onclick="calculer()">Valider</button>
+        </div>
+        <br><br>
+        <center><h3>Résultats</h3></center>
+        <div id="res">
+            <label> Abscisse : </label><span id="ptt"></span><br> 
+            <label> Ordonnée : </label><span id="pht"></span><br>
+        </div>
+    </body>
+</html>

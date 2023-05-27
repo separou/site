@@ -1,0 +1,21 @@
+#res{background: gray;
+    border:1px solid white;
+    width: 1px;
+}
+#form,#res{
+    padding:10px;
+    margin-left:20%;
+    border:1px solid black;
+    background:#ECF0F1;
+    width: 60%;
+}
+label{
+   display: inline-block;
+   width: 100px;
+}
+button{
+   padding: 10px;
+   background: #338AFF;
+   color: white;
+   margin-left: 100px;
+}
